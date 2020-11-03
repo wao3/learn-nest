@@ -59,7 +59,8 @@ export class TasksService {
   ): Promise<Task> {
     let task: Task = await this.getTaskById(id, user);
     task.status = status;
+    await task.save();
 
-    return await task.save();
+    return task;
   }
 }
